@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Kuliah & Cornell Notes</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Dashboard Jadwal Kuliah</h1>
+    <p>Organisir jadwal & catatan perkuliahan dengan Cornell Notes</p>
+  </header>
+  
+  <!-- SECTION 1: SCHEDULE VIEW -->
+  <section id="schedule-view" class="view">
+    <div class="add-course-form">
+      <h2>Tambah / Edit Jadwal Kuliah</h2>
+      <input type="hidden" id="course-id" />
+      <input type="text" id="course-name" placeholder="Nama Matakuliah" />
+      <select id="course-day">
+        <option value="Senin">Senin</option>
+        <option value="Selasa">Selasa</option>
+        <option value="Rabu">Rabu</option>
+        <option value="Kamis">Kamis</option>
+        <option value="Jumat">Jumat</option>
+      </select>
+      <input type="time" id="course-time" placeholder="Jam Kuliah" />
+      <input type="text" id="course-room" placeholder="Ruangan" />
+      <button id="save-course-btn">Simpan</button>
+      <button id="cancel-edit-course-btn" style="display:none;">Batal Edit</button>
+    </div>
+
+    <!-- Grid per hari -->
+    <div class="schedule-grid">
+      <!-- Kolom-kolom hari akan dirender oleh JavaScript -->
+    </div>
+  </section>
+  
+  <!-- SECTION 2: MEETINGS VIEW (List pertemuan / catatan) -->
+  <section id="meetings-view" class="view" style="display: none;">
+    <button class="back-btn" data-target="schedule-view">← Kembali ke Jadwal</button>
+    <h2 id="meetings-title">Pertemuan untuk: [Nama Matakuliah]</h2>
+    
+    <!-- Form buat / edit pertemuan -->
+    <div class="meeting-form">
+      <h3>Tambah / Edit Pertemuan</h3>
+      <input type="hidden" id="meeting-id" />
+      <input type="text" id="meeting-title" placeholder="Judul Pertemuan" />
+      <button id="save-meeting-btn">Simpan</button>
+      <button id="cancel-edit-meeting-btn" style="display:none;">Batal Edit</button>
+    </div>
+    
+    <!-- Daftar pertemuan akan dirender di sini -->
+    <ul id="meetings-list"></ul>
+  </section>
+
+  <!-- SECTION 3: MEETING DETAIL VIEW (Cornell Notes) -->
+  <section id="meeting-detail-view" class="view" style="display: none;">
+    <button class="back-btn" data-target="meetings-view">← Kembali ke Daftar Pertemuan</button>
+    <h2 id="detail-title">Cornell Notes</h2>
+    
+    <!-- Form buat / edit Cornell Notes -->
+    <div class="notes-form">
+      <h3>Tambah / Edit Notes</h3>
+      <input type="hidden" id="notes-mode" value="add" />
+      <div class="grid-2col">
+        <div>
+          <label>Key Points</label>
+          <textarea id="notes-keypoints"></textarea>
+        </div>
+        <div>
+          <label>Notes</label>
+          <textarea id="notes-text"></textarea>
+        </div>
+      </div>
+      <div class="summary-section">
+        <label>Summary</label>
+        <textarea id="notes-summary"></textarea>
+      </div>
+      <button id="save-notes-btn">Simpan</button>
+      <button id="cancel-edit-notes-btn" style="display:none;">Batal Edit</button>
+    </div>
+    
+    <!-- Tabel / daftar Cornell Notes -->
+    <div class="notes-list">
+      <h3>List Cornell Notes</h3>
+      <div id="notes-container"></div>
+    </div>
+  </section>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
